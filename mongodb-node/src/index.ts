@@ -4,8 +4,10 @@ import cors from "cors"
 dotenv.config()
 const app = express();
 import { router as carsRouter } from "./cars/index"
-app.use(cors())
+import connectToDB from "./db/index"
 
+app.use(cors())
+connectToDB()
 
 app.get("/health-check", (req, res, next) => {
     res.status(200).send("Api is working!")
