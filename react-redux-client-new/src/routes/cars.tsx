@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { setNumberOfCars } from "../store/carsSlice/carsSlice"
+import { incrementNumberOfCars, setNumberOfCars } from "../store/carsSlice/carsSlice"
 
 export default function Cars() {
     const dispatch = useDispatch()
@@ -10,5 +10,10 @@ export default function Cars() {
             console.log(event.target.value)
             dispatch(setNumberOfCars(+event.target.value))
         }} />
+        <button onClick={() => {
+            dispatch(incrementNumberOfCars())
+        }}>
+            incrementNumberOfCars
+        </button>
     </div>
 }

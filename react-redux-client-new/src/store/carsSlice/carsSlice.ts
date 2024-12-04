@@ -15,11 +15,14 @@ export const carsSlice = createSlice({
     reducers: {
         setNumberOfCars: (state, action: PayloadAction<number>) => {
             state.numberOfCars = action.payload
+        },
+        incrementNumberOfCars: (state) => {
+            state.numberOfCars += 1
         }
     }
 })
 
-const { setNumberOfCars } = carsSlice.actions
-export { setNumberOfCars } // single action
+const { setNumberOfCars, incrementNumberOfCars } = carsSlice.actions
+export { setNumberOfCars, incrementNumberOfCars } // single action
 
 export default carsSlice.reducer // connect to store
