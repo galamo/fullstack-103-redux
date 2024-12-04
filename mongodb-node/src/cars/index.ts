@@ -7,7 +7,9 @@ router.get("/", async (req: Request, res: Response, next: NextFunction): Promise
     try {
         console.log(req.params)
         const data = await getCars()
-        return res.json({ message: "Order Max card get it after an year!!", data })
+        setTimeout(() => {
+            return res.json({ message: "Order Max card get it after an year!!", data })
+        }, 2000);
     } catch (error) {
         return next(error)
     }
