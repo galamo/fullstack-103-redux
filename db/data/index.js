@@ -23,7 +23,7 @@ async function seed() {
             "Year": String,
             "Origin": String
         })
-        const TestModel = mongoose.model("vehicles", TestSchemModel)
+        const TestModel = mongoose.model("cars", TestSchemModel)
         const result = await TestModel.find()
         console.log(result)
         await TestModel.insertMany(data)

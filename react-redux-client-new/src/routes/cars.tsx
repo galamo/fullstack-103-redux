@@ -29,3 +29,6 @@ export default function Cars() {
         <button onClick={() => { dispatch(fetchCars()) }}> Get Cars </button>
     </div>
 }
+
+
+
