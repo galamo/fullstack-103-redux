@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { fetchCars, incrementNumberOfCars, setNumberOfCars } from "../store/carsSlice/carsSlice"
 import { AppDispatch, RootState } from "../store"
+import { useState } from "react"
 
 export default function Cars() {
     const dispatch = useDispatch<AppDispatch>()
-
+    const [carModel, setCarModel] = useState("")
     const numberOfCars = useSelector((state: RootState) => state.cars.numberOfCars)
     const isLoading = useSelector((state: RootState) => state.cars.cars.isLoading)
     const cars = useSelector((state: RootState) => state.cars.cars.data)
@@ -26,7 +27,10 @@ export default function Cars() {
         }}>
             incrementNumberOfCars
         </button>
-        <button onClick={() => { dispatch(fetchCars()) }}> Get Cars </button>
+        <input type="text" onChange={(e) => {
+            setCarModel(e?.target?.value)
+        }} placeholder="car model" />
+        <button onClick={() => { dispatch(fetchCars(carModel)) }}> Get Cars </button>
     </div>
 }
 

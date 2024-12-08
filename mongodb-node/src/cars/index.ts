@@ -4,8 +4,8 @@ import getCars from "./handlers/getCars"
 const router = express.Router()
 router.get("/", async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
-        console.log(req.params)
-        const data = await getCars()
+        const data = await getCars(req?.query?.name as string)
+        // req.query.name send to queue 
         setTimeout(() => {
             return res.json({ message: "Order Max card get it after an year!!", data })
         }, 2000);

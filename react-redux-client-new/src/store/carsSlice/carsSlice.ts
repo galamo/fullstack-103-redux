@@ -21,9 +21,10 @@ const initState: CarsState = {
 }
 
 export const fetchCars = createAsyncThunk("fetch/cars",
-    async () => {
+    async (inputParam?: string) => {
         try {
-            const result = await axios.get("http://localhost:4500/cars")
+            const queryParams = inputParam ? `?name=${inputParam}` : ""
+            const result = await axios.get(`http://localhost:4500/cars${queryParams}`)
             return result.data
         } catch (error) {
             console.log("error", error)
@@ -45,8 +46,7 @@ export const carsSlice = createSlice({
         builder.addCase(fetchCars.pending, (state) => {
             state.cars.isLoading = true;
         }).addCase(fetchCars.fulfilled, (state, action) => {
-            // state.cars.data = action.payload.data
-            state.cars.data.push(...action.payload.data)
+            state.cars.data = action.payload.data
             state.cars.isLoading = false;
         }).addCase(fetchCars.rejected, (state, action) => {
             state.cars.isLoading = false;
