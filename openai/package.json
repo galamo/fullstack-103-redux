@@ -1,0 +1,17 @@
+{
+    "name": "openai",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "nodemon ./src/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "nodemon": "^3.1.7",
+        "openai": "^4.76.1"
+    }
+}
