@@ -1,11 +1,12 @@
 import express, { NextFunction, Request, Response } from "express"
 import getCars from "./handlers/getCars"
-
+import { sendMessageToQueue } from "../rmq"
 const router = express.Router()
 router.get("/", async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         const data = await getCars(req?.query?.name as string)
         // req.query.name send to queue 
+        sendMessageToQueue(req.query.name)
         setTimeout(() => {
             return res.json({ message: "Order Max card get it after an year!!", data })
         }, 2000);
