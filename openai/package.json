@@ -4,13 +4,16 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "nodemon ./src/index.js"
+        "start": "nodemon ./src/api.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {
+        "amqplib": "^0.10.5",
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
         "nodemon": "^3.1.7",
         "openai": "^4.76.1"
     }
